@@ -4,7 +4,7 @@ clear;
 close all;
 
 load phantomSinogram.txt;
-imageProjection = getBackProjection(phantomSinogram, 1);
+imageProjection = getBackProjection(phantomSinogram);
 
 figure;
 imagesc(imageProjection);

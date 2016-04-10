@@ -6,7 +6,7 @@ clear;
 close all;
 
 load sinogramTask6.txt;
-imageBackProjection = getBackProjection(sinogramTask6, 1);
+imageBackProjection = getBackProjection(sinogramTask6);
 
 figure;
 imagesc(imageBackProjection);
