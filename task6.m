@@ -20,4 +20,4 @@ ylabel('Projection $m$');
 
 drawnow;
 
-saveTightFigure(h, 'Figures/sinogramTask6');
+saveTightFigure(h, 'Figures/sinogramTask6.pdf');

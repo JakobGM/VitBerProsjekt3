@@ -1,10 +1,15 @@
-% Making projection of phantom from phantomSinogram.txt
+% Drawing phantom sinogram and projection of phantom from phantomSinogram.txt
 
 clear;
 close all;
 
-load phantomSinogram.txt;
+load Sinograms/phantomSinogram.txt;
 imageProjection = getBackProjection(phantomSinogram);
+
+figure;
+imagesc(phantomSinogram);
+colormap('gray');
+drawnow;
 
 figure;
 imagesc(imageProjection);
