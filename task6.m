@@ -8,15 +8,14 @@ close all;
 load Sinograms/sinogramTask6.txt;
 
 h = figure;
-imagesc(sinogramTask6);
 colormap('gray');
-
 set(groot, 'defaultTextInterpreter', 'latex');
 set(groot, 'defaultAxesTickLabelInterpreter', 'latex');
 set(groot, 'defaultLegendInterpreter', 'latex');
 
-xlabel(['Angle $\theta$ (in degrees)']);
-ylabel('Projection $m$');
+imagesc(sinogramTask6);
+xlabel('Vinkel $\theta$ (i grader)');
+ylabel('Projeksjon $m$');
 
 drawnow;
 

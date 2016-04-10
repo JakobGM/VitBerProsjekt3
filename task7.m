@@ -13,20 +13,24 @@ load Sinograms/sinogramTask6.txt;
 imageBackProjection = getBackProjection(sinogramTask6);
 
 h = figure;
-
+colormap('gray');
 set(groot, 'defaultTextInterpreter', 'latex');
 set(groot, 'defaultAxesTickLabelInterpreter', 'latex');
 set(groot, 'defaultLegendInterpreter', 'latex');
 
-colormap('gray');
-
 subplot(1,2,1);
 imagesc(im);
 axis('square');
+title('Opprinnelig bilde');
+set(gca,'xtick',[]), set(gca,'xticklabel',[])
+set(gca,'ytick',[]), set(gca,'yticklabel',[])
 
 subplot(1,2,2);
 imagesc(imageBackProjection);
 axis('square');
+title('Direkte tilbakeprojisert bilde');
+set(gca,'xtick',[]), set(gca,'xticklabel',[])
+set(gca,'ytick',[]), set(gca,'yticklabel',[])
 
 drawnow;
 
