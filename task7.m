@@ -11,7 +11,7 @@ im = zeros(N);
 im(7:10,7:10) = 1;
 
 % Sinogram and backprojection
-load Sinograms/sinogramTask6.txt;
+load sinograms/sinogramTask6.txt;
 imBackProjection = getBackProjection(sinogramTask6);
 
 % Calculate RMS
@@ -22,7 +22,7 @@ E = reshape(E,1,N*N);
 rmsDeviation = rms(E);
 disp(['RMS-avvik: ' num2str(rmsDeviation)]);
 
-% Plot image and backprojection
+% Draw image and backprojection
 h = figure;
 colormap('gray');
 set(groot, 'defaultTextInterpreter', 'latex');
@@ -45,4 +45,4 @@ set(gca,'ytick',[]), set(gca,'yticklabel',[])
 
 drawnow;
 
-saveTightFigure(h, 'Figures/imageAndBackProjetionTask8.pdf');
+saveTightFigure(h, 'figures/imageAndBackProjetionTask8.pdf');

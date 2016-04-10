@@ -3,4 +3,4 @@
 N = 256;
 im = phantom(N);
 sinogram = getSinogram(im, N);
-save Sinograms/phantomSinogram.txt sinogram -ascii;
+save sinograms/phantomSinogram.txt sinogram -ascii;
