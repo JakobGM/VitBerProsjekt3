@@ -6,7 +6,18 @@ clear;
 close all;
 
 load Sinograms/sinogramTask6.txt;
-figure;
+
+h = figure;
 imagesc(sinogramTask6);
 colormap('gray');
+
+set(groot, 'defaultTextInterpreter', 'latex');
+set(groot, 'defaultAxesTickLabelInterpreter', 'latex');
+set(groot, 'defaultLegendInterpreter', 'latex');
+
+xlabel(['Angle $\theta$ (in degrees)']);
+ylabel('Projection $m$');
+
 drawnow;
+
+saveTightFigure(h, 'Figures/sinogramTask6');
