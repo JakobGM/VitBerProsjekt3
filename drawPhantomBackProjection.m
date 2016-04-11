@@ -3,8 +3,8 @@
 clear;
 close all;
 
-load Sinograms/phantomSinogram.txt;
-imageProjection = getBackProjection(phantomSinogram);
+load sinograms/phantomSinogram.txt;
+imBackProjection = getBackProjection(phantomSinogram);
 
 figure;
 imagesc(phantomSinogram);
@@ -12,7 +12,7 @@ colormap('gray');
 drawnow;
 
 figure;
-imagesc(imageProjection);
+imagesc(imBackProjection);
 colormap('gray');
 axis square;
 drawnow;

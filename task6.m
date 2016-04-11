@@ -5,8 +5,9 @@
 clear;
 close all;
 
-load Sinograms/sinogramTask6.txt;
+load sinograms/sinogramTask6.txt;
 
+% Draw sinogram
 h = figure;
 colormap('gray');
 set(groot, 'defaultTextInterpreter', 'latex');
@@ -19,4 +20,4 @@ ylabel('Projeksjon $m$');
 
 drawnow;
 
-saveTightFigure(h, 'Figures/sinogramTask6.pdf');
+saveTightFigure(h, 'figures/sinogramTask6.pdf');

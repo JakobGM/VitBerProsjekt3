@@ -4,11 +4,23 @@
 clear;
 close all;
 
-load sinogram01.txt;
-imageProjection = getBackProjection(sinogram01);
+% Sinogram and backprojection
+load sinograms/sinogram01.txt;
+imBackProjection = getBackProjection(sinogram01);
 
-figure;
-imagesc(imageProjection);
+% Draw image
+h = figure;
 colormap('gray');
-axis square;
+set(groot, 'defaultTextInterpreter', 'latex');
+set(groot, 'defaultAxesTickLabelInterpreter', 'latex');
+set(groot, 'defaultLegendInterpreter', 'latex');
+
+imagesc(imBackProjection);
+axis('square');
+title('Direkte tilbakeprojisert bilde');
+set(gca,'xtick',[]), set(gca,'xticklabel',[])
+set(gca,'ytick',[]), set(gca,'yticklabel',[])
+
 drawnow;
+
+saveTightFigure(h, 'figures/imageAndBackProjetionTask8.pdf');
