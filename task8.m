@@ -5,8 +5,9 @@ clear;
 close all;
 
 % Sinogram and backprojection
-load sinograms/sinogram01.txt;
-imBackProjection = getBackProjection(sinogram01);
+filename = 'sinogram01';
+sinogram = load(['sinograms/' filename '.txt']);
+imBackProjection = getBackProjection(sinogram);
 
 % Draw image
 h = figure;
@@ -23,4 +24,4 @@ set(gca,'ytick',[]), set(gca,'yticklabel',[])
 
 drawnow;
 
-saveTightFigure(h, 'figures/imageAndBackProjetionTask8.pdf');
+saveTightFigure(h, ['figures/backProjetion_' filename '.pdf']);

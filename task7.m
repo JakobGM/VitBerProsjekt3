@@ -45,4 +45,4 @@ set(gca,'ytick',[]), set(gca,'yticklabel',[])
 
 drawnow;
 
-saveTightFigure(h, 'figures/imageAndBackProjetionTask8.pdf');
+saveTightFigure(h, 'figures/imageAndBackProjetionTask7.pdf');
