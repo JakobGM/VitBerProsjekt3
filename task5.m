@@ -1,7 +1,5 @@
-% Task 4
-% Calculating the projection and backprojection of a 3x3 Matrix
-clear
-close all
+% Task 5
+% Calculating the procection of a 3x3 matrix, this time with additional diagnoal projections
 
 % Matrix representing a body consisting of a square bone in the middle of square soft tissue
 M   =  [0 0 0; ...
@@ -27,6 +25,8 @@ drawnow
 % Projections
 collumnProjection = sum(M,1); % theta = 0
 rowProjection = sum(M,2); % theta = pi/2
+rightLeftDiagProjection = [M(1,1)+M(1,2)+M(2,1), sum(diag(M(:,end:-1:1))), M(3,3)+M(2,3)+M(3,2)]; %theta = pi/4
+leftRightDiagProjection = [M(3,1)+M(3,2)+M(2,1), sum(diag(M)), M(1,3)+M(1,2)+M(2,3)]; %theta = 3pi/4
 
 % Back projection matrix
 N = zeros(3);
@@ -35,6 +35,16 @@ for x = 1:3
     N(y,x) = collumnProjection(x) + rowProjection(y);
   end
 end
+
+% Adding theta = pi/4 projections
+N([1 1 2],[1 2 1]) = N([1 1 2],[1 2 1]) + rightLeftDiagProjection(1);
+N([1 2 3],[3 2 1]) = N([1 2 3],[3 2 1]) + rightLeftDiagProjection(2);
+N([2 3 3],[3 3 2]) = N([2 3 3],[3 3 2]) + rightLeftDiagProjection(3);
+
+% Adding theta = 3pi/4 projections
+N([2 3 3],[1 1 2]) = N([2 3 3],[1 1 2]) + leftRightDiagProjection(1);
+N([1 2 3],[1 2 3]) = N([1 2 3],[1 2 3]) + leftRightDiagProjection(2);
+N([1 1 2],[2 3 3]) = N([1 1 2],[2 3 3]) + leftRightDiagProjection(3);
 
 % Normalization
 N = N ./ sum(sum(N));
@@ -50,4 +60,8 @@ title('Direkte tilbakeprojisert bilde')
 drawnow
 
 % Saving figures
-saveTightFigure(fig3x3, 'figures/3x3Matrix.pdf')
+saveTightFigure(fig3x3, 'figures/3x3MatrixV2.pdf')
+
+% Showing value of N matrix in terminal
+format rat
+N
