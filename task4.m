@@ -25,8 +25,8 @@ title('Originalt bilde')
 drawnow
 
 % Projections
-collumnProjection = sum(M,1);
-rowProjection = sum(M,2);
+collumnProjection = sum(M,1); % theta = 0
+rowProjection = sum(M,2); % theta = pi/2
 
 % Back projection matrix
 N = zeros(3);
