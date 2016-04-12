@@ -5,11 +5,44 @@
 clear;
 close all;
 
-load sinogramTask6.txt;
-imageBackProjection = getBackProjection(sinogramTask6);
+% Image
+N = 16;
+im = zeros(N);
+im(7:10,7:10) = 1;
 
-figure;
-imagesc(imageBackProjection);
+% Sinogram and backprojection
+load sinograms/sinogramTask6.txt;
+imBackProjection = getBackProjection(sinogramTask6);
+
+% Calculate RMS
+imBackProjectionNormalized = imBackProjection/sum(sum(imBackProjection));
+imNormalized = im/sum(sum(im));
+E = imNormalized - imBackProjectionNormalized;
+E = reshape(E,1,N*N);
+rmsDeviation = rms(E);
+disp(['RMS-avvik: ' num2str(rmsDeviation)]);
+
+% Draw image and backprojection
+h = figure;
 colormap('gray');
-axis square;
+set(groot, 'defaultTextInterpreter', 'latex');
+set(groot, 'defaultAxesTickLabelInterpreter', 'latex');
+set(groot, 'defaultLegendInterpreter', 'latex');
+
+subplot(1,2,1);
+imagesc(im);
+axis('square');
+title('Opprinnelig bilde');
+set(gca,'xtick',[]), set(gca,'xticklabel',[])
+set(gca,'ytick',[]), set(gca,'yticklabel',[])
+
+subplot(1,2,2);
+imagesc(imBackProjection);
+axis('square');
+title('Direkte tilbakeprojisert bilde');
+set(gca,'xtick',[]), set(gca,'xticklabel',[])
+set(gca,'ytick',[]), set(gca,'yticklabel',[])
+
 drawnow;
+
+saveTightFigure(h, 'figures/imageAndBackProjetionTask7.pdf');
