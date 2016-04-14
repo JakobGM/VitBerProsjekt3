@@ -65,3 +65,8 @@ saveTightFigure(fig3x3, 'figures/3x3MatrixV2.pdf')
 % Showing value of N matrix in terminal
 format rat
 N
+format long
+
+% Calculating root mean square difference between original picture and the backprojection
+rmsDiff = mean(mean((N-M).^2))^2;
+disp(rmsDiff)

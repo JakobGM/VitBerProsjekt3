@@ -51,3 +51,7 @@ drawnow
 
 % Saving figures
 saveTightFigure(fig3x3, 'figures/3x3Matrix.pdf')
+
+% Calculating root mean square difference between original picture and the backprojection
+rmsDiff = mean(mean((N-M).^2))^2;
+disp(rmsDiff)
