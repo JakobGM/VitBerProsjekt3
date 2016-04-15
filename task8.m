@@ -24,4 +24,4 @@ set(gca,'ytick',[]), set(gca,'yticklabel',[])
 
 drawnow;
 
-saveTightFigure(h, ['figures/backProjetion_' filename '.pdf']);
+saveTightFigure(h, ['figures/backProjection_' filename '.pdf']);

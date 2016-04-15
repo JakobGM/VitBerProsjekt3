@@ -15,8 +15,9 @@ load sinograms/sinogramTask6.txt;
 imBackProjection = getBackProjection(sinogramTask6);
 
 % Calculate RMS
-imBackProjectionNormalized = imBackProjection/sum(sum(imBackProjection));
-imNormalized = im/sum(sum(im));
+imBackProjectionNormalized = imBackProjection ...
+    /sum(sum(imBackProjection)) * sum(sum(im));
+imNormalized = im;
 E = imNormalized - imBackProjectionNormalized;
 E = reshape(E,1,N*N);
 rmsDeviation = rms(E);
@@ -45,4 +46,4 @@ set(gca,'ytick',[]), set(gca,'yticklabel',[])
 
 drawnow;
 
-saveTightFigure(h, 'figures/imageAndBackProjetionTask7.pdf');
+saveTightFigure(h, 'figures/imageAndBackProjectionTask7.pdf');
