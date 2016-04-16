@@ -68,7 +68,6 @@ N
 format long
 
 % Calculating root mean square difference between original picture and the backprojection
-A = abs(N-M);
-A = A ./ max(max(A));
-rmsDiff = mean(mean((A).^2))^2;
-fprintf('The scaled root mean square difference between the original picture and the backprojection is: \n\trms = %1.4f\n', rmsDiff)
+A = abs(N-M); % Difference
+rmsDiff = sqrt(mean(mean((A).^2)));
+fprintf('The root mean square difference between the original picture and the backprojection is: \n\trms = %1.4f\n', rmsDiff)
