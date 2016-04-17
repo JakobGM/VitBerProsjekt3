@@ -1,6 +1,7 @@
 N = 256;
 f = phantom(N);
-fSinogram = getSinogram(f,N);
+Ntheta = 0 : 1/180 : 180;
+fSinogram = getSinogram(f,N, 180);
 g = getBackProjection(fSinogram);
 
 F = fft2(f);
