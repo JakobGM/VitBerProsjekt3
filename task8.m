@@ -5,7 +5,7 @@ clear;
 close all;
 
 % Sinogram and backprojection
-sinogramFilename = 'phantomSinogram';
+sinogramFilename = 'sinogram01';
 sinogram = load(['sinograms/' sinogramFilename '.txt']);
 imBackProjection = getBackProjection(sinogram);
 save(['backProjections/' sinogramFilename 'BackProjection'], ...
