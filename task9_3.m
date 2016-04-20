@@ -1,11 +1,9 @@
 N = 256;
 f = phantom(N);
-Ntheta = 0 : 1/180 : 180;
-fSinogram = getSinogram(f,N, 180);
-g = getBackProjection(fSinogram);
+load('backProjections/phantomSinogramBackProjection.mat');
 
 F = fft2(f);
-G = fft2(g);
+G = fft2(imBackProjection);
 
 set(groot, 'defaultTextInterpreter', 'latex');
 set(groot, 'defaultAxesTickLabelInterpreter', 'latex');
