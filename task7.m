@@ -15,10 +15,10 @@ load sinograms/sinogramTask6.txt;
 imBackProjection = getBackProjection(sinogramTask6);
 
 % Calculate RMS
-imBackProjectionNormalized = imBackProjection ...
-    /sum(sum(imBackProjection)) * sum(sum(im));
+imBackProjection = (imBackProjection - min(min(imBackProjection))) / ...
+    max(max(imBackProjection));
 imNormalized = im;
-E = imNormalized - imBackProjectionNormalized;
+E = imNormalized - imBackProjection;
 E = reshape(E,1,N*N);
 rmsDeviation = rms(E);
 disp(['RMS-avvik: ' num2str(rmsDeviation)]);
