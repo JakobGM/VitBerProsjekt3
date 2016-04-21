@@ -18,6 +18,7 @@ H = A .* G1;
 h = real(ifft2(ifftshift(H)));
 
 % Draw image
+pictureWithFilter2 = figure();
 colormap('gray');
 set(groot, 'defaultTextInterpreter', 'latex');
 set(groot, 'defaultAxesTickLabelInterpreter', 'latex');
@@ -34,3 +35,6 @@ set(gca,'xtick',[]), set(gca,'xticklabel',[])
 set(gca,'ytick',[]), set(gca,'yticklabel',[])
 
 drawnow;
+
+saveTightFigure(pictureWithFilter2, ...
+    'figures/pictureWithFilter2.pdf'); % saves figure

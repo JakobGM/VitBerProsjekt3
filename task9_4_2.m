@@ -1,33 +1,33 @@
-% f = phantom(256);
-% load('backProjections/phantomSinogramBackProjection.mat');
+N = 256;
+A = zeros(N,N);
 
-colormap('gray');
-f = double(imread('IverBrevik.jpg')) / 255;
-f = rgb2gray(f);
-load('backProjections/sinogramIverBackProjection.mat');
+r = 0;
+R = sqrt((N/2)^2+(N/2)^2);
 
-F = fft2(f);
-G = fft2(imBackProjection);
-
-R = 100;
-for i = 1:N
-    for j = 1:N
-        if sqrt((i-N/2)^2+(j-N/2)^2) < R
-            F(i,j) = 0;
+a = r;
+while a < R
+    for i = 1:N
+        for j = 1:N
+            if sqrt((i-N/2)^2+(j-N/2)^2) < N/2 && ...
+                    sqrt((i-N/2)^2+(j-N/2)^2) > r
+                A(i,j) = (sqrt((i-N/2)^2+(j-N/2)^2) - r) / (N/2 - r);
+            elseif (sqrt((i-N/2)^2+(j-N/2)^2)) > N/2
+                A(i,j) = 1;
+            end
         end
     end
+    a = a + 1;
 end
 
-A = F ./ G;
-A_real = abs(real(A));
-A = A_real + imag(A);
+A = tanh(A);
 
 load('backProjections/sinogram02BackProjection.mat');
-G1 = fft2(imBackProjection);
-H = A .* G1;
+G = fft2(imBackProjection);
+H = A .* G;
 h = real(ifft2(H));
 
 % Draw image
+pictureWithFilter = figure();
 colormap('gray');
 set(groot, 'defaultTextInterpreter', 'latex');
 set(groot, 'defaultAxesTickLabelInterpreter', 'latex');
@@ -44,3 +44,6 @@ set(gca,'xtick',[]), set(gca,'xticklabel',[])
 set(gca,'ytick',[]), set(gca,'yticklabel',[])
 
 drawnow;
+
+saveTightFigure(pictureWithFilter, ...
+    'figures/pictureWithFilter.pdf'); % saves figure
